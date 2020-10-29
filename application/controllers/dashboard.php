@@ -34,7 +34,7 @@ class Dashboard extends CI_Controller
         $this->session->set_flashdata('pesan', '<script>
         Swal.fire({
             icon: "success",
-            title: "Berhasil menambah ke keranjang",
+            title: "Buku berhasil ditambahkan",
             showConfirmButton: false,
             timer: 1500
           })
@@ -59,13 +59,15 @@ class Dashboard extends CI_Controller
     {
         //Fungsi untuk menghapus semua isi di keranjang
         $this->cart->destroy();
-        $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">
-        Buku anda di Keranjang telah di Hapus, silahkan melanjutkan belanja.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
-        redirect('welcome');
+        $this->session->set_flashdata('pesan', '<script>
+        Swal.fire({
+            icon: "success",
+            title: "Hapus!",
+            text : "Buku berhasil dihapus dari Keranjang.",
+          })
+        </script>');
+
+        redirect('dashboard/detail_keranjang');
     }
 
     //Pembuatan function pembayaran

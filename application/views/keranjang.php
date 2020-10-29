@@ -1,5 +1,5 @@
 <div class="container-fluid mb-5">
-
+    <?= $this->session->flashdata('pesan') ?>
     <div class="card">
         <div class="card-header">
             <?= $title_card; ?>
@@ -46,20 +46,20 @@
 </div>
 <!-- Modal Delete -->
 <div class="modal fade" id="DeleteDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Hapus Buku</h5>
                 <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">×</span>
                 </button>
             </div>
             <div class="modal-body">
 
-                <h4>Apakah anda yakin untuk menghapus list keranjang?</h4>
+                <h4 class="text-center">Apakah anda yakin untuk menghapus list keranjang?</h4>
 
             </div>
-            <?= form_open_multipart('menu_data/hapus'); ?>
+            <?= form_open_multipart('dashboard/hapus_keranjang'); ?>
             <div class="form-group row">
                 <div class="col-sm-5">
                     <input type="hidden" class="form-control" id="id" name="id_legalisir" value="">
@@ -67,8 +67,8 @@
             </div>
 
             <div class="modal-footer">
-                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-primary" type="submit">OK</button>
+                <button class="btn btn-primary" type="submit">Ok</button>
+                <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
             </div>
         </div>
     </div>
