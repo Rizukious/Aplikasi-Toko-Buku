@@ -31,12 +31,14 @@ class Dashboard extends CI_Controller
         );
 
         $this->cart->insert($data);
-        $this->session->set_flashdata('pesan', '<div class="alert alert-info" role="alert">
-        Buku anda Sudah masuk ke keranjang, klik Keranjang Belanja untuk melihat Detail Belanja anda.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
+        $this->session->set_flashdata('pesan', '<script>
+        Swal.fire({
+            icon: "success",
+            title: "Berhasil menambah ke keranjang",
+            showConfirmButton: false,
+            timer: 1500
+          })
+        </script>');
         redirect('welcome');
     }
 

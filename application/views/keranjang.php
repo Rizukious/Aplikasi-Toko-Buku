@@ -30,15 +30,45 @@
                 </tr>
             </table>
             <div align="right">
-                <a href="<?= base_url('dashboard/hapus_keranjang') ?>">
+                <button class="btn btn-sm btn-danger  tombol-hapus" data-toggle="modal" data-target="#DeleteDataModal">Hapus Keranjang</button>
+                <!-- <a href="<?= base_url('dashboard/hapus_keranjang') ?>">
                     <div class="btn btn-sm btn-danger">Hapus Keranjang</div>
-                </a>
+                </a> -->
                 <a href="<?= base_url('welcome') ?>">
                     <div class="btn btn-sm btn-primary">Lanjutkan Belanja</div>
                 </a>
                 <a href="<?= base_url('dashboard/pembayaran') ?>">
                     <div class="btn btn-sm btn-success">Pembayaran</div>
                 </a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal Delete -->
+<div class="modal fade" id="DeleteDataModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Delete Data</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <h4>Apakah anda yakin untuk menghapus list keranjang?</h4>
+
+            </div>
+            <?= form_open_multipart('menu_data/hapus'); ?>
+            <div class="form-group row">
+                <div class="col-sm-5">
+                    <input type="hidden" class="form-control" id="id" name="id_legalisir" value="">
+                </div>
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" type="submit">OK</button>
             </div>
         </div>
     </div>

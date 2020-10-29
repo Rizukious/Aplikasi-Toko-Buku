@@ -8,8 +8,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
+  <?php if ($this->session->userdata('username')) { ?>
+    <title><?= $title; ?></title>
+  <?php } else { ?>
+    <title>Toko Buku</title>
+  <?php } ?>
 
-  <title><?= $title; ?></title>
 
   <!-- Custom fonts for this template-->
   <link href="<?= base_url() ?>assets/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -20,5 +24,8 @@
 
   <!-- Custom styles for this page -->
   <link href="<?= base_url() ?>assets/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+  <link rel="shortcut icon" href="<?= base_url() ?>assets/img/icon.png" />
+
+  <script src="<?= base_url() ?>assets/sweetalert2/dist/sweetalert2.all.js"></script>
 
 </head>

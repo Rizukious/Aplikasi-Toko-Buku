@@ -9,7 +9,7 @@
       <!-- Sidebar - Brand -->
       <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
         <div class="sidebar-brand-icon">
-          <i class="fas fa-store"></i>
+          <img src="<?= base_url() ?>assets/img/icon.png" alt="" class="img-fluid" style="width: 50px; height: 50px;">
         </div>
         <div class="sidebar-brand-text mx-3">TOKO BUKU</div>
       </a>
