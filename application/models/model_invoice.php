@@ -7,13 +7,19 @@ class Model_invoice extends CI_Model
     {
         //setting waktu setempat
         date_default_timezone_set('Asia/Jakarta');
+        $id = $this->input->post('id_user');
         $nama = $this->input->post('nama');
         $alamat = $this->input->post('alamat');
-        $id = $this->input->post('id_user');
+        $notel = $this->input->post('no_telp');
+        $jk = $this->input->post('jasa_kirim');
+        $bank = $this->input->post('bank');
         $invoice = array(
             'id_user'   => $id,
             'nama'      => $nama,
             'alamat'    => $alamat,
+            'no_telp'   => $notel,
+            'jasa_kirim' => $jk,
+            'bank'      => $bank,
             'tgl_pesan' => date('Y-m-d H:i:s'),
             //batas bayar 1 hari setelah pemesanan
             'batas_bayar' => date('Y-m-d H:i:s', mktime(date('H'), date('i'), date('s'), date('m'), date('d') + 1, date('Y'))),
@@ -21,6 +27,7 @@ class Model_invoice extends CI_Model
         );
         //input ke table invoice
         $this->db->insert('tb_invoice', $invoice);
+
         $id_invoice = $this->db->insert_id();
 
         //Memasukkan juga ke table pemesanan

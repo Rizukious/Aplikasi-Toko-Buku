@@ -84,18 +84,47 @@ class Dashboard extends CI_Controller
     //Pembuatan function Proses pemesanan
     public function proses_pesanan()
     {
-        $is_processed = $this->model_invoice->index();
-        if ($is_processed) {
-            //Jika memesan, hapus keranjang
-            $this->cart->destroy();
+        // Validasi form pengiriman dan pembayaran
+        $this->form_validation->set_rules('nama', 'Nama', 'required', [
+            'required' => 'Nama Lengkap Wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('alamat', 'Alamat', 'required', [
+            'required' => 'Alamat Lengkap Wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('no_telp', 'No. Telepon', 'required', [
+            'required' => 'No. Telepon Wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('jasa_kirim', 'Jasa Kirim', 'required', [
+            'required' => 'Jasa Pengiriman Wajib diisi!'
+        ]);
+        $this->form_validation->set_rules('bank', 'Bank', 'required', [
+            'required' => 'Bank Wajib diisi!'
+        ]);
+
+        if ($this->form_validation->run() == FALSE) {
+            //load ke form pembayaran
+            $data['title']  = 'User | Form Transaksi';
             //Template
-            $data['title']  = 'User | Proses Pesanan';
             $this->load->view('templates/header', $data);
             $this->load->view('templates/sidebar');
-            $this->load->view('proses_pesanan');
+            $this->load->view('pembayaran');
             $this->load->view('templates/footer');
         } else {
-            echo "Maaf, Pesanan Anda Gagal diProses!!";
+            $is_processed =  $this->model_invoice->index();
+
+            if ($is_processed) {
+                //Jika memesan, hapus keranjang
+                $this->cart->destroy();
+                $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
+                Data Pesanan berhasil di simpan.
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>');
+                redirect('dashboard/pembayaran');
+            } else {
+                echo "Maaf, Pesanan Anda Gagal diProses!!";
+            }
         }
     }
 

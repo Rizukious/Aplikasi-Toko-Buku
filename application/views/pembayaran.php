@@ -11,6 +11,7 @@
 
                                                             ?></h6>
         </div>
+        <?= $this->session->flashdata('pesan') ?>
         <div class="row justify-content-center">
             <div class="col-md-8 m-5">
                 <h3>Input Alamat Pengiriman dan Pembayaran</h3>
@@ -21,34 +22,41 @@
                     </div>
                     <div class="form-group">
                         <label for="">Nama Lengkap</label>
-                        <input type="text" name="nama" placeholder="Nama Lengkap Anda" class="form-control">
+                        <input type="text" name="nama" value="<?= $this->session->userdata('nama') ?>" placeholder="Nama Lengkap Anda" class="form-control">
+                        <?= form_error('nama', '<div class="text-danger small ml-2">', '</div>') ?>
                     </div>
                     <div class="form-group">
                         <label for="">Alamat Lengkap</label>
-                        <input type="text" name="alamat" placeholder="Alamat Lengkap Anda" class="form-control">
+                        <input type="text" name="alamat" placeholder="Alamat Lengkap Anda" value="<?= set_value('alamat') ?>" class="form-control">
+                        <?= form_error('alamat', '<div class="text-danger small ml-2">', '</div>') ?>
                     </div>
                     <div class="form-group">
                         <label for="">No Telepon</label>
-                        <input type="text" name="no_telp" placeholder="No. Telepon Anda" class="form-control">
+                        <input type="text" name="no_telp" placeholder="No. Telepon Anda" value="<?= set_value('no_telp') ?>" class=" form-control">
+                        <?= form_error('no_telp', '<div class="text-danger small ml-2">', '</div>') ?>
                     </div>
                     <div class="form-group">
                         <label for="">Jasa Pengiriman</label>
-                        <select name="" id="" class="form-control">
-                            <option value="">JNE</option>
-                            <option value="">TIKI</option>
-                            <option value="">Pos Indonesia</option>
-                            <option value="">Gojek</option>
-                            <option value="">Grab</option>
+                        <select name="jasa_kirim" id="" class="form-control">
+                            <option>-- Pilih Jasa Kirim --</option>
+                            <option>JNE</option>
+                            <option>TIKI</option>
+                            <option>Pos Indonesia</option>
+                            <option>Gojek</option>
+                            <option>Grab</option>
                         </select>
+                        <?= form_error('jasa_kirim', '<div class="text-danger small ml-2">', '</div>') ?>
                     </div>
                     <div class="form-group">
                         <label for="">Pilih BANK</label>
-                        <select name="" id="" class="form-control">
-                            <option value="">BCA - XXXXXXX</option>
-                            <option value="">BNI - XXXXXXX</option>
-                            <option value="">BRI - XXXXXXX</option>
-                            <option value="">Mandiri - XXXXXXX</option>
+                        <select name="bank" id="" class="form-control" value="<?= set_value('bank') ?>">
+                            <option>-- Pilih Bank --</option>
+                            <option>BCA - XXXXXXX</option>
+                            <option>BNI - XXXXXXX</option>
+                            <option>BRI - XXXXXXX</option>
+                            <option>Mandiri - XXXXXXX</option>
                         </select>
+                        <?= form_error('bank', '<div class="text-danger small ml-2">', '</div>') ?>
                     </div>
                     <button class="btn btn-sm btn-primary mb-3" type="submit">Pesan</button>
                 </form>
