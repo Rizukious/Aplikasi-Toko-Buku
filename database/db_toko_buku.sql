@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Sep 2020 pada 06.32
+-- Waktu pembuatan: 02 Nov 2020 pada 16.37
 -- Versi server: 10.4.11-MariaDB
 -- Versi PHP: 7.4.2
 
@@ -43,21 +43,21 @@ CREATE TABLE `tb_buku` (
 --
 
 INSERT INTO `tb_buku` (`id_buku`, `judul_buku`, `keterangan`, `kategori`, `harga`, `stok`, `gambar`) VALUES
-(1, 'Pemrograman Web ', 'TERMURAH ORIGINAL Buku Modul Pemrograman Web HTML Php dan MySQL Terbaru', 'Pemrograman', 135000, 9, 'pemrograman web.jpg'),
-(2, 'Daun yang Jatuh Tak Pernah Membenci Angin ', 'Tanggal Terbit : 16 Apr 2018,  ISBN : 9786020331607,  Bahasa : Indonesia,  Penerbit : Gramedia Pustaka Utama ', 'Novel', 69000, 9, '9786020331607_Daun-yang-Jatuh-Tak-Pernah-Membenci-Angin-Cover-Baru-2018.jpg'),
+(1, 'Pemrograman Web ', 'TERMURAH ORIGINAL Buku Modul Pemrograman Web HTML Php dan MySQL Terbaru', 'Pemrograman', 135000, 8, 'pemrograman web.jpg'),
+(2, 'Daun yang Jatuh Tak Pernah Membenci Angin ', 'Tanggal Terbit : 16 Apr 2018,  ISBN : 9786020331607,  Bahasa : Indonesia,  Penerbit : Gramedia Pustaka Utama ', 'Novel', 69000, 7, '9786020331607_Daun-yang-Jatuh-Tak-Pernah-Membenci-Angin-Cover-Baru-2018.jpg'),
 (5, 'Si Anak Badai', 'Tanggal Terbit : 31 Jul 2019,  ISBN : 9786025734939,  Bahasa : Indonesia,  Penerbit : Republika Penerbit', 'Novel', 70000, 4, '9786025734939_Si-Anak-Badai.jpg'),
 (6, 'Negeri di Ujung Tanduk', 'Tanggal Terbit : 7 Mei 2018,  ISBN : 9789792294293,  Bahasa : Indonesia,  Penerbit : Gramedia Pustaka Utama', 'Novel', 85000, 12, '9789792294293_Negeri-di-Uju.jpg'),
 (7, 'Dikatakan atau Tidak Dikatakan Itu Tetap Cinta', 'Tanggal Terbit : 28 Nov 2016,  ISBN : 9786020332833,  Bahasa : Indonesia,  Penerbit : Gramedia Pustaka Utama', 'Novel', 77000, 20, '9786020332833_dikatakan-atau-tidak-dikatakan-itu-tetap-cinta---hard-cover.jpg'),
 (8, 'Menguasai Pemrograman Berorientasi Objek +Cd', 'Tanggal Terbit : 8 Feb 2020,  ISBN : 9786237131236,  Bahasa : Indonesia,  Penerbit : Informatika', 'Pemrograman', 125000, 15, 'menguasai_pemrograman.jpg'),
-(9, 'Belajar Otodidak Bahasa Pemrograman Sql Menggunakan Mariadb', 'Tanggal Terbit : 16 Jun 2020,  ISBN : 9786237498476,  Bahasa : Indonesia,  Penerbit : Gava Media', 'Pemrograman', 51000, 6, 'SQL.jpg'),
-(10, 'Mahir Bahasa Pemrograman PHP', 'Tanggal Terbit : 20 Mei 2019,  ISBN : 9786020498768,  Bahasa : Indonesia,  Penerbit : Elex Media Komputindo', 'Pemrograman', 60800, 12, '9786020498768_Mahir_Bahasa_.jpg'),
+(9, 'Belajar Otodidak Bahasa Pemrograman Sql Menggunakan Mariadb', 'Tanggal Terbit : 16 Jun 2020,  ISBN : 9786237498476,  Bahasa : Indonesia,  Penerbit : Gava Media', 'Pemrograman', 51000, 5, 'SQL.jpg'),
+(10, 'Mahir Bahasa Pemrograman PHP', 'Tanggal Terbit : 20 Mei 2019,  ISBN : 9786020498768,  Bahasa : Indonesia,  Penerbit : Elex Media Komputindo', 'Pemrograman', 60800, 11, '9786020498768_Mahir_Bahasa_.jpg'),
 (11, 'Soekarno: Sebuah Biografi', 'Tanggal Terbit : 3 Des 2019,  ISBN : 9786232440074,  Bahasa : Indonesia,  Penerbit : Roemah Soekarno', 'Biografi', 69000, 24, 'soekarno.jpg'),
-(12, 'Biografi Imam Al-Ghazali', 'Tanggal Terbit : 1 Okt 2019,  ISBN : 9786025547614,  Bahasa : Indonesia,  Penerbit : Qaf Media Kreativa', 'Biografi', 50000, 3, '9786025547614.jpg'),
-(13, 'Biografi Umar Bin Al Khathab', 'Tanggal Terbit : 30 Okt 2018,  ISBN : 9789795926412,  Bahasa : Indonesia,  Penerbit : Pustaka Al Kautsar', 'Biografi', 165000, 9, 'img20200720_15535433.jpg'),
-(14, 'Biografi Politik Habibie : Dari Malari Sampai Reformasi', 'Tanggal Terbit : 13 Apr 2017,  ISBN : 9789799116048,  Bahasa : Indonesia,  Penerbit : Media Pressindo', 'Biografi', 95000, 7, '9789799116048_biografi-politik-habibie-dari-malari-sampai-reformasi.jpg'),
-(15, 'Komik Horor Nusantara: Setan Lokal', 'Tanggal Terbit : 9 Mar 2020,  ISBN : 9786024813475,  Bahasa : Indonesia,  Penerbit : Kepustakaan Populer Gramedia', 'Komik', 83000, 14, '9786024813475_Komik_Horor_Nusantara_Lokal__Page_1.jpg'),
-(16, 'Komik Next G Misteri Gubuk Tua', 'Tanggal Terbit : 5 Agt 2020,  ISBN : 9786023678440,  Bahasa : Indonesia,  Penerbit : Curhat Anak Bangsa', 'Komik', 36000, 19, 'Misteri_Gubuk_Tua.jpg'),
-(17, 'Komik Kkpk : Camera Phobia', 'Tanggal Terbit : 10 Mar 2020,  ISBN : 9786232540231,  Bahasa : Indonesia,  Penerbit : Curhat Anak Bangsa', 'Komik', 35000, 23, 'komik-kkpk-camera-phobia.jpg'),
+(12, 'Biografi Imam Al-Ghazali', 'Tanggal Terbit : 1 Okt 2019,  ISBN : 9786025547614,  Bahasa : Indonesia,  Penerbit : Qaf Media Kreativa', 'Biografi', 50000, 2, '9786025547614.jpg'),
+(13, 'Biografi Umar Bin Al Khathab', 'Tanggal Terbit : 30 Okt 2018,  ISBN : 9789795926412,  Bahasa : Indonesia,  Penerbit : Pustaka Al Kautsar', 'Biografi', 165000, 8, 'img20200720_15535433.jpg'),
+(14, 'Biografi Politik Habibie : Dari Malari Sampai Reformasi', 'Tanggal Terbit : 13 Apr 2017,  ISBN : 9789799116048,  Bahasa : Indonesia,  Penerbit : Media Pressindo', 'Biografi', 95000, 6, '9789799116048_biografi-politik-habibie-dari-malari-sampai-reformasi.jpg'),
+(15, 'Komik Horor Nusantara: Setan Lokal', 'Tanggal Terbit : 9 Mar 2020,  ISBN : 9786024813475,  Bahasa : Indonesia,  Penerbit : Kepustakaan Populer Gramedia', 'Komik', 83000, 13, '9786024813475_Komik_Horor_Nusantara_Lokal__Page_1.jpg'),
+(16, 'Komik Next G Misteri Gubuk Tua', 'Tanggal Terbit : 5 Agt 2020,  ISBN : 9786023678440,  Bahasa : Indonesia,  Penerbit : Curhat Anak Bangsa', 'Komik', 36000, 14, 'Misteri_Gubuk_Tua.jpg'),
+(17, 'Komik Kkpk : Camera Phobia', 'Tanggal Terbit : 10 Mar 2020,  ISBN : 9786232540231,  Bahasa : Indonesia,  Penerbit : Curhat Anak Bangsa', 'Komik', 35000, 21, 'komik-kkpk-camera-phobia.jpg'),
 (18, 'Komik Kelurga Muslim (Perpingkot)', 'Tanggal Terbit : 20 Jul 2030,  ISBN : 9786021695579,  Penerbit : Salsabila', 'Komik', 75000, 15, '9786021695579.jpg');
 
 -- --------------------------------------------------------
@@ -100,6 +100,9 @@ CREATE TABLE `tb_invoice` (
   `id_user` int(11) NOT NULL,
   `nama` varchar(50) NOT NULL,
   `alamat` varchar(225) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
+  `jasa_kirim` varchar(50) NOT NULL,
+  `bank` varchar(50) NOT NULL,
   `tgl_pesan` datetime NOT NULL,
   `batas_bayar` datetime NOT NULL,
   `points` int(11) NOT NULL
@@ -109,10 +112,23 @@ CREATE TABLE `tb_invoice` (
 -- Dumping data untuk tabel `tb_invoice`
 --
 
-INSERT INTO `tb_invoice` (`id`, `id_user`, `nama`, `alamat`, `tgl_pesan`, `batas_bayar`, `points`) VALUES
-(15, 2, 'user', 'Kota Bekasi', '2020-09-24 14:10:22', '2020-09-25 14:10:22', 5),
-(16, 3, 'rizki', 'rizki', '2020-09-24 14:11:15', '2020-09-25 14:11:15', 5),
-(17, 2, 'user', 'Kota Bekasi', '2020-09-24 16:26:03', '2020-09-25 16:26:03', 5);
+INSERT INTO `tb_invoice` (`id`, `id_user`, `nama`, `alamat`, `no_telp`, `jasa_kirim`, `bank`, `tgl_pesan`, `batas_bayar`, `points`) VALUES
+(21, 2, 'user', '', '', '', '', '2020-10-30 14:04:28', '2020-10-31 14:04:28', 5),
+(22, 2, 'user', '', '', '', '', '2020-10-30 14:08:09', '2020-10-31 14:08:09', 5),
+(23, 2, 'user', 'Bekasi, Jawa Barat', '085211345481', 'TIKI', 'BNI - XXXXXXX', '2020-10-30 15:40:25', '2020-10-31 15:40:25', 5),
+(24, 2, 'user', 'TEST1', '1', 'JNE', 'BCA - XXXXXXX', '2020-10-30 15:44:22', '2020-10-31 15:44:22', 5),
+(25, 2, 'user', 'TEST2', '2', 'TIKI', 'BNI - XXXXXXX', '2020-10-30 15:47:32', '2020-10-31 15:47:32', 5),
+(26, 2, 'user', 'TEST3', '3', 'Pos Indonesia', 'BRI - XXXXXXX', '2020-10-30 15:48:16', '2020-10-31 15:48:16', 5),
+(27, 2, 'user', 'test4', '4', 'Gojek', 'Mandiri - XXXXXXX', '2020-10-30 15:50:01', '2020-10-31 15:50:01', 5),
+(28, 2, 'user', 'test5', '5', 'Grab', 'Mandiri - XXXXXXX', '2020-10-30 15:53:14', '2020-10-31 15:53:14', 5),
+(29, 2, 'user', 'TEST6', '6', 'TIKI', 'BNI - XXXXXXX', '2020-10-30 15:56:43', '2020-10-31 15:56:43', 5),
+(30, 2, 'user', 'test7', '7', 'TIKI', 'Mandiri - XXXXXXX', '2020-10-30 15:58:38', '2020-10-31 15:58:38', 5),
+(31, 2, 'user', 'test7', '7', 'TIKI', 'Mandiri - XXXXXXX', '2020-10-30 15:58:54', '2020-10-31 15:58:54', 5),
+(32, 2, 'user', 'TEST8', '8', 'TIKI', 'BCA - XXXXXXX', '2020-10-30 16:02:34', '2020-10-31 16:02:34', 5),
+(33, 2, 'user', 'test9', '9', 'Gojek', 'BCA - XXXXXXX', '2020-10-30 16:04:35', '2020-10-31 16:04:35', 5),
+(34, 2, 'user', 'test10', '10', 'JNE', 'BRI - XXXXXXX', '2020-10-30 16:05:43', '2020-10-31 16:05:43', 5),
+(35, 2, 'user', 'test12', '12', 'JNE', 'BRI - XXXXXXX', '2020-10-30 16:09:34', '2020-10-31 16:09:34', 5),
+(36, 2, 'user', 'test13', '13', 'TIKI', 'BNI - XXXXXXX', '2020-10-30 16:11:50', '2020-10-31 16:11:50', 5);
 
 -- --------------------------------------------------------
 
@@ -134,11 +150,19 @@ CREATE TABLE `tb_pesanan` (
 --
 
 INSERT INTO `tb_pesanan` (`id`, `id_invoice`, `id_buku`, `judul_buku`, `jumlah`, `harga`) VALUES
-(21, 15, 15, 'Komik Horor Nusantara: Setan Lokal', 1, 83000),
-(22, 15, 16, 'Komik Next G Misteri Gubuk Tua', 1, 36000),
-(23, 16, 14, 'Biografi Politik Habibie : Dari Malari Sampai Reformasi', 1, 95000),
-(24, 16, 12, 'Biografi Imam Al-Ghazali', 1, 50000),
-(25, 17, 13, 'Biografi Umar Bin Al Khathab', 1, 165000);
+(29, 21, 15, 'Komik Horor Nusantara: Setan Lokal', 1, 83000),
+(30, 22, 10, 'Mahir Bahasa Pemrograman PHP', 1, 60800),
+(31, 23, 12, 'Biografi Imam Al-Ghazali', 1, 50000),
+(32, 24, 16, 'Komik Next G Misteri Gubuk Tua', 1, 36000),
+(33, 25, 16, 'Komik Next G Misteri Gubuk Tua', 1, 36000),
+(34, 26, 16, 'Komik Next G Misteri Gubuk Tua', 1, 36000),
+(35, 27, 14, 'Biografi Politik Habibie : Dari Malari Sampai Reformasi', 1, 95000),
+(36, 28, 1, 'Pemrograman Web ', 1, 135000),
+(37, 30, 9, 'Belajar Otodidak Bahasa Pemrograman Sql Menggunakan Mariadb', 1, 51000),
+(38, 32, 2, 'Daun yang Jatuh Tak Pernah Membenci Angin ', 1, 69000),
+(39, 33, 2, 'Daun yang Jatuh Tak Pernah Membenci Angin ', 1, 69000),
+(40, 34, 17, 'Komik Kkpk : Camera Phobia', 1, 35000),
+(41, 35, 13, 'Biografi Umar Bin Al Khathab', 1, 165000);
 
 --
 -- Trigger `tb_pesanan`
@@ -166,13 +190,6 @@ CREATE TABLE `tb_pesan_reward` (
   `tgl_pesan` datetime NOT NULL,
   `keterangan` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data untuk tabel `tb_pesan_reward`
---
-
-INSERT INTO `tb_pesan_reward` (`id`, `id_hadiah`, `nama`, `alamat`, `jumlah`, `tgl_pesan`, `keterangan`) VALUES
-(1, 5, 'user', 'Kota Bekasi', 1, '2020-09-24 23:52:04', '');
 
 -- --------------------------------------------------------
 
@@ -245,31 +262,31 @@ ALTER TABLE `tb_user`
 -- AUTO_INCREMENT untuk tabel `tb_buku`
 --
 ALTER TABLE `tb_buku`
-  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id_buku` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_hadiah`
 --
 ALTER TABLE `tb_hadiah`
-  MODIFY `id_hadiah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_hadiah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_invoice`
 --
 ALTER TABLE `tb_invoice`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pesanan`
 --
 ALTER TABLE `tb_pesanan`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_pesan_reward`
 --
 ALTER TABLE `tb_pesan_reward`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tb_user`
