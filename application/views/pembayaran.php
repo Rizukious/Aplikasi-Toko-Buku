@@ -14,6 +14,9 @@
         <?= $this->session->flashdata('pesan') ?>
         <div class="row justify-content-center">
             <div class="col-md-8 m-5">
+                <!-- Codingan Testing Api -->
+
+                <!-- Codingan Lama -->
                 <h3>Input Alamat Pengiriman dan Pembayaran</h3>
                 <form action="<?= base_url('dashboard/proses_pesanan') ?>" method="post">
                     <div class="form-group">
