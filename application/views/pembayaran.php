@@ -1,3 +1,34 @@
+<?php
+
+$curl = curl_init();
+
+curl_setopt_array($curl, array(
+  CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+  CURLOPT_RETURNTRANSFER => true,
+  CURLOPT_ENCODING => "",
+  CURLOPT_MAXREDIRS => 10,
+  CURLOPT_TIMEOUT => 30,
+  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+  CURLOPT_CUSTOMREQUEST => "GET",
+  CURLOPT_HTTPHEADER => array(
+    "key: 22dbaea8e73f18a13ad2e657a41a612d"
+  ),
+));
+
+$response = curl_exec($curl);
+$err = curl_error($curl);
+
+curl_close($curl);
+
+if ($err) {
+  echo "cURL Error #:" . $err;
+} else {
+    // Merubah data JSON menjadi Array 
+   $provinsi = json_decode($response, true);
+}
+?>
+
+
 <div class="container-fluid">
     <div class="card shadow mb-4">
         <div class="card-header py-3 bg-success text-white">
@@ -15,10 +46,52 @@
         <div class="row justify-content-center">
             <div class="col-md-8 m-5">
                 <!-- Codingan Testing Api -->
-
-                <!-- Codingan Lama -->
                 <h3>Input Alamat Pengiriman dan Pembayaran</h3>
-                <form action="<?= base_url('dashboard/proses_pesanan') ?>" method="post">
+
+                <form>
+                  <h4>Alamat Pengirim</h4>
+
+                  <div class="row">
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Provinsi Asal</label>
+                            <select id="provinsi" name="provinsi" class="form-control" id="exampleFormControlSelect1">
+                              <option>Pilih Provinsi</option>
+                              <!-- Menampilkan data hasil parsing JSON to Array -->
+                              <?php 
+                                if ($provinsi['rajaongkir']['status']['code'] == '200') {
+                                    foreach ($provinsi['rajaongkir']['results'] as $pv) {
+                                        echo "<option name='$pv[province_id]'>$pv[province]</option>";
+                                    }
+                                }
+                               ?>
+                            </select>
+                          </div>
+                      </div>
+
+                      <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="exampleFormControlSelect1">Kota Asal</label>
+                            <select id="kota" name="kota" class="form-control" id="exampleFormControlSelect1">
+                              <option value="">Pilih Provinsi Dulu</option>
+                              <!-- Menampilkan data hasil parsing JSON to Array -->
+                              
+                            </select>
+                          </div>
+                      </div>
+                  </div>
+                  
+                  
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Email address</label>
+                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                  </div>
+
+                  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+                </form>
+
+                <!--============= Codingan Lama =============-->
+                <!-- <form action="<?= base_url('dashboard/proses_pesanan') ?>" method="post">
                     <div class="form-group">
                         <label for="">ID User</label>
                         <input type="text" name="id_user" value="<?= $this->session->userdata('id') ?>" class="form-control" readonly>
@@ -62,7 +135,7 @@
                         <?= form_error('bank', '<div class="text-danger small ml-2">', '</div>') ?>
                     </div>
                     <button class="btn btn-sm btn-primary mb-3" type="submit">Pesan</button>
-                </form>
+                </form> -->
             <?php
                                                             } else {
                                                                 echo "<h4>Keranjang Belanja Anda Masih Kosong!!</h4>
@@ -73,3 +146,20 @@
         </div>
     </div>
 </div>
+
+<!-- Script JS with Ajax Custom -->
+<script>
+    //Pemanggilan ID dan pembuatan event
+    document.getElementById('provinsi').addEventListener('change', function() {
+        // akses
+        fetch("<?= base_url('dashboard/kota/')?>"+this.value, {
+            method:'GET',
+
+        })
+        .then((response) => response.text())
+        .then((data) => {
+            // console.log(data)
+            document.getElementById('kota').innerHTML = data
+        })
+    })
+</script>
