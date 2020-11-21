@@ -57,7 +57,8 @@
                                 <td class="text-center">
                                     <?= anchor('admin/data_buku/detail/' . $bk->id_buku, '<div class="btn btn-success btn-sm btn-circle"><i class="fas fa-search-plus"></i></div>') ?>
                                     <?= anchor('admin/data_buku/edit/' . $bk->id_buku, '<div class="btn btn-sm btn-warning btn-circle"><i class="fas fa-edit"></i></div>') ?>
-                                    <?= anchor('admin/data_buku/hapus/' . $bk->id_buku, '<div class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash-alt"></i></div>') ?>
+                                    <!-- <?= anchor('admin/data_buku/hapus/' . $bk->id_buku, '<div class="btn btn-sm btn-danger btn-circle"><i class="fas fa-trash-alt"></i></div>') ?> -->
+                                    <button class="btn btn-sm btn-danger btn-circle" data-toggle="modal" data-target="#DeleteDataModal<?= $bk->id_buku; ?>"><i class="fas fa-trash-alt"></i></button>
                                 </td>
                             </tr>
                         <?php endforeach; ?>
@@ -67,7 +68,7 @@
         </div>
     </div>
 
-    <!-- Modal -->
+    <!-- Modal Input Buku-->
     <div class="modal fade" id="tambah_buku" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -115,6 +116,36 @@
                     <button type="submit" class="btn btn-primary">Simpan</button>
                 </div>
                 </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Delete -->
+    <div class="modal fade" id="DeleteDataModal<?= $bk->id_buku; ?>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Hapus Buku</h5>
+                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+
+                    <h4 class="text-center">Apakah anda yakin untuk menghapus Data Buku?</h4>
+
+                </div>
+                <?= form_open_multipart('data_buku/hapus'); ?>
+                <div class="form-group row">
+                    <div class="col-sm-5">
+                        <input type="hidden" class="form-control" id="id" name="id_legalisir" value="<?= $bk->id_buku; ?>">
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" type="submit">Ok</button>
+                    <button class="btn btn-danger" type="button" data-dismiss="modal">Batal</button>
+                </div>
             </div>
         </div>
     </div>

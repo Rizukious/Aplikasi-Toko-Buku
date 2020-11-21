@@ -66,13 +66,14 @@ class Data_buku extends CI_Controller
     );
 
     $this->model_buku->tambah_buku($data, 'tb_buku');
-    $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-            Data Buku Berhasil di Tambah.
-            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>');
-    redirect('admin/data_buku/index');
+    $this->session->set_flashdata('pesan', '<script>
+    Swal.fire({
+        icon: "success",
+        title: "Berhasil!",
+        text : "Data Buku berhasil ditambahkan."
+      })
+    </script>');
+    redirect('admin/data_buku');
   }
 
   // Pembuatan Function detail
@@ -124,13 +125,14 @@ class Data_buku extends CI_Controller
       'id_buku' => $id
     );
     $this->model_buku->update_buku($where, $data, 'tb_buku');
-    $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-        Data Buku Berhasil di Ubah.
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>');
-    redirect('admin/data_buku/index');
+    $this->session->set_flashdata('pesan', '<script>
+    Swal.fire({
+        icon: "success",
+        title: "Edit!",
+        text : "Data Buku berhasil di Edit."
+      })
+    </script>');
+    redirect('admin/data_buku');
   }
 
   //Pembuatan Function Hapus
