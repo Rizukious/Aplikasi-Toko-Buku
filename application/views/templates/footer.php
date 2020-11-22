@@ -60,6 +60,33 @@
 
 <!-- Page level custom scripts -->
 <script src="<?= base_url() ?>assets/js/demo/datatables-demo.js"></script>
+
+<!-- Script Custom Ajax -->
+<script>
+    document.getElementById('provinsi').addEventListener('change', function() {
+
+        fetch("<?= base_url('Dashboard/kota/') ?>" + this.value, {
+                method: 'GET'
+            })
+            .then((response) => response.text())
+            .then((data) => {
+                console.log(data)
+                document.getElementById('kota').innerHTML = data
+            })
+    })
+
+    document.getElementById('provinsi_penerima').addEventListener('change', function() {
+
+        fetch("<?= base_url('Dashboard/kota/') ?>" + this.value, {
+                method: 'GET'
+            })
+            .then((response) => response.text())
+            .then((data) => {
+                console.log(data)
+                document.getElementById('kota_penerima').innerHTML = data
+            })
+    })
+</script>
 </body>
 
 </html>

@@ -3,16 +3,16 @@
 $curl = curl_init();
 
 curl_setopt_array($curl, array(
-  CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
-  CURLOPT_RETURNTRANSFER => true,
-  CURLOPT_ENCODING => "",
-  CURLOPT_MAXREDIRS => 10,
-  CURLOPT_TIMEOUT => 30,
-  CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-  CURLOPT_CUSTOMREQUEST => "GET",
-  CURLOPT_HTTPHEADER => array(
-    "key: 22dbaea8e73f18a13ad2e657a41a612d"
-  ),
+    CURLOPT_URL => "https://api.rajaongkir.com/starter/province",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "GET",
+    CURLOPT_HTTPHEADER => array(
+        "key: 22dbaea8e73f18a13ad2e657a41a612d"
+    ),
 ));
 
 $response = curl_exec($curl);
@@ -21,13 +21,12 @@ $err = curl_error($curl);
 curl_close($curl);
 
 if ($err) {
-  echo "cURL Error #:" . $err;
+    echo "cURL Error #:" . $err;
 } else {
-    // Merubah data JSON menjadi Array 
-   $provinsi = json_decode($response, true);
+    // Merubah Data JSON menjadi Array
+    $provinsi = json_decode($response, true);
 }
 ?>
-
 
 <div class="container-fluid">
     <div class="card shadow mb-4">
@@ -48,48 +47,195 @@ if ($err) {
                 <!-- Codingan Testing Api -->
                 <h3>Input Alamat Pengiriman dan Pembayaran</h3>
 
-                <form>
-                  <h4>Alamat Pengirim</h4>
+                <form method="POST">
+                    <h4>Alamat Pengirim</h4>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Provinsi Asal</label>
+                                <select id="provinsi" name="provinsi" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="">Pilih Provinsi</option>
+                                    <!-- Menampilkan data hasil parsing JSON to Array -->
+                                    <?php
+                                                                if ($provinsi['rajaongkir']['status']['code'] == '200') {
+                                                                    foreach ($provinsi['rajaongkir']['results'] as $pv) {
+                                                                        echo "<option value='$pv[province_id]' " . ($pv['province_id'] == $this->input->post('provinsi') ? "selected" : "") . ">$pv[province]</option>";
+                                                                    }
+                                                                }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
 
-                  <div class="row">
-                      <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Provinsi Asal</label>
-                            <select id="provinsi" name="provinsi" class="form-control" id="exampleFormControlSelect1">
-                              <option>Pilih Provinsi</option>
-                              <!-- Menampilkan data hasil parsing JSON to Array -->
-                              <?php 
-                                if ($provinsi['rajaongkir']['status']['code'] == '200') {
-                                    foreach ($provinsi['rajaongkir']['results'] as $pv) {
-                                        echo "<option name='$pv[province_id]'>$pv[province]</option>";
-                                    }
-                                }
-                               ?>
-                            </select>
-                          </div>
-                      </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Kota Asal</label>
+                                <select id="kota" name="kota" class="form-control" id="exampleFormControlSelect1">
 
-                      <div class="col-md-6">
-                          <div class="form-group">
-                            <label for="exampleFormControlSelect1">Kota Asal</label>
-                            <select id="kota" name="kota" class="form-control" id="exampleFormControlSelect1">
-                              <option value="">Pilih Provinsi Dulu</option>
-                              <!-- Menampilkan data hasil parsing JSON to Array -->
-                              
-                            </select>
-                          </div>
-                      </div>
-                  </div>
-                  
-                  
-                  <div class="form-group">
-                    <label for="exampleFormControlInput1">Email address</label>
-                    <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
-                  </div>
+                                    <!-- Menampilkan data hasil parsing JSON to Array -->
+                                    <?php
+                                                                if (count($_POST)) {
+                                                                    $curl = curl_init();
 
-                  <button type="submit" class="btn btn-primary mb-2">Confirm identity</button>
+                                                                    curl_setopt_array($curl, array(
+                                                                        CURLOPT_URL => "https://api.rajaongkir.com/starter/city?&province=" . $this->input->post('provinsi'),
+                                                                        CURLOPT_RETURNTRANSFER => true,
+                                                                        CURLOPT_ENCODING => "",
+                                                                        CURLOPT_MAXREDIRS => 10,
+                                                                        CURLOPT_TIMEOUT => 30,
+                                                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                                                        CURLOPT_CUSTOMREQUEST => "GET",
+                                                                        CURLOPT_HTTPHEADER => array(
+                                                                            "key: 22dbaea8e73f18a13ad2e657a41a612d"
+                                                                        ),
+                                                                    ));
+
+                                                                    $response = curl_exec($curl);
+                                                                    $err = curl_error($curl);
+
+                                                                    curl_close($curl);
+
+                                                                    if ($err) {
+                                                                        echo "cURL Error #:" . $err;
+                                                                    } else {
+                                                                        // Merubah Data JSON menjadi Array
+                                                                        $kota = json_decode($response, true);
+
+                                                                        //Pengecekan terhubungkan ke API
+                                                                        if ($kota['rajaongkir']['status']['code'] == '200') {
+                                                                            echo "<option value=''>Pilih Kota</option>";
+                                                                            foreach ($kota['rajaongkir']['results'] as $kt) {
+                                                                                echo "<option value='$kt[city_id]' " . ($kt['city_id'] == $this->input->post('kota') ? "selected" : "") . ">$kt[city_name]</option>";
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    echo "<option>Pilih Provinsi Dulu</option>";
+                                                                }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h4>Alamat Penerima</h4>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Provinsi Penerima</label>
+                                <select id="provinsi_penerima" name="provinsi_penerima" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="">Pilih Provinsi Penerima</option>
+                                    <!-- Menampilkan data hasil parsing JSON to Array -->
+                                    <?php
+                                                                if ($provinsi['rajaongkir']['status']['code'] == '200') {
+                                                                    foreach ($provinsi['rajaongkir']['results'] as $pv) {
+                                                                        echo "<option value='$pv[province_id]' " . ($pv['province_id'] == $this->input->post('provinsi_penerima') ? "selected" : "") . ">$pv[province]</option>";
+                                                                    }
+                                                                }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Kota Penerima</label>
+                                <select id="kota_penerima" name="kota_penerima" class="form-control" id="exampleFormControlSelect1">
+                                    <?php
+                                                                if (count($_POST)) {
+                                                                    $curl = curl_init();
+
+                                                                    curl_setopt_array($curl, array(
+                                                                        CURLOPT_URL => "https://api.rajaongkir.com/starter/city?&province=" . $this->input->post('provinsi_penerima'),
+                                                                        CURLOPT_RETURNTRANSFER => true,
+                                                                        CURLOPT_ENCODING => "",
+                                                                        CURLOPT_MAXREDIRS => 10,
+                                                                        CURLOPT_TIMEOUT => 30,
+                                                                        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                                                        CURLOPT_CUSTOMREQUEST => "GET",
+                                                                        CURLOPT_HTTPHEADER => array(
+                                                                            "key: 22dbaea8e73f18a13ad2e657a41a612d"
+                                                                        ),
+                                                                    ));
+
+                                                                    $response = curl_exec($curl);
+                                                                    $err = curl_error($curl);
+
+                                                                    curl_close($curl);
+
+                                                                    if ($err) {
+                                                                        echo "cURL Error #:" . $err;
+                                                                    } else {
+                                                                        // Merubah Data JSON menjadi Array
+                                                                        $kota = json_decode($response, true);
+
+                                                                        //Pengecekan terhubungkan ke API
+                                                                        if ($kota['rajaongkir']['status']['code'] == '200') {
+                                                                            echo "<option value=''>Pilih Kota</option>";
+                                                                            foreach ($kota['rajaongkir']['results'] as $kt) {
+                                                                                echo "<option value='$kt[city_id]' " . ($kt['city_id'] == $this->input->post('kota_penerima') ? "selected" : "") . ">$kt[city_name]</option>";
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                } else {
+                                                                    echo "<option>Pilih Provinsi Dulu</option>";
+                                                                }
+                                    ?>
+
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlSelect1">Ekspedisi</label>
+                                <select id="ekspedisi" name="ekspedisi" class="form-control" id="exampleFormControlSelect1">
+                                    <option value="">Pilih Ekspedisi</option>
+                                    <!-- Menampilkan data hasil parsing JSON to Array -->
+                                    <?php
+                                                                $eks = ['jne' => 'JNE', 'pos' => 'POS', 'tiki' => 'TIKI'];
+                                                                foreach ($eks as $key => $value) {
+                                                                    echo "<option value='$key' " . ($key == $this->input->post('ekspedisi') ? "selected" : "") . ">$value</option>";
+                                                                }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="exampleFormControlInput1">Berat (gram)</label>
+                                <input type="text" name="berat" value="<?= $this->input->post('berat') ?>" class="form-control" id="berat" placeholder="gram">
+                            </div>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary mb-2">Proses</button>
                 </form>
 
+                <div class="card-deck">
+                    <?php
+                                                                $biaya = json_decode($ongkir, true);
+                                                                if ($biaya['rajaongkir']['status']['code'] == '200') {
+                                                                    foreach ($biaya['rajaongkir']['results'][0]['costs'] as $by) {
+                    ?>
+                            <div class="card">
+                                <!-- <img src="..." class="card-img-top" alt="..."> -->
+                                <div class="card-body">
+                                    <h5 class="card-title"><?= $by['service']; ?></h5>
+                                    <p class="card-text"><?= $by['description']; ?></p>
+                                    <p class="card-text">Rp. <?= number_format($by['cost']['0']['value'], 0, ',', '.') ?></p>
+                                    <p class="card-text"><small class="text-muted">Estimasi Pengiriman <?= $by['cost']['0']['etd']; ?> Hari</small></p>
+                                </div>
+                            </div>
+                    <?php
+
+                                                                    }
+                                                                }
+                    ?>
+                </div>
                 <!--============= Codingan Lama =============-->
                 <!-- <form action="<?= base_url('dashboard/proses_pesanan') ?>" method="post">
                     <div class="form-group">
@@ -146,20 +292,3 @@ if ($err) {
         </div>
     </div>
 </div>
-
-<!-- Script JS with Ajax Custom -->
-<script>
-    //Pemanggilan ID dan pembuatan event
-    document.getElementById('provinsi').addEventListener('change', function() {
-        // akses
-        fetch("<?= base_url('dashboard/kota/')?>"+this.value, {
-            method:'GET',
-
-        })
-        .then((response) => response.text())
-        .then((data) => {
-            // console.log(data)
-            document.getElementById('kota').innerHTML = data
-        })
-    })
-</script>
